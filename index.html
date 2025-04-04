@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão com Link Oculto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #botao-acesso {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #mensagem {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Acesso Restrito</h1>
+    <p>Digite seu e-mail para verificar o acesso:</p>
+    <input type="email" id="email-input" placeholder="Seu e-mail">
+    <button id="botao-acesso">Verificar Acesso</button>
+    <div id="mensagem"></div>
+
+    <script>
+        // Lista de e-mails autorizados
+        const emailsAutorizados = [
+            "rafael.rocha.off@gmail.com",
+            "usuario2@gmail.com",
+            "usuario3@gmail.com"
+        ];
+
+        // Link do Google Drive (oculto)
+        const linkGoogleDrive = "https://us06web.zoom.us/j/88113615679 (Passcode: 6uCbcF11!)";
+
+        // Função para verificar o acesso
+        document.getElementById("botao-acesso").addEventListener("click", function() {
+            const emailDigitado = document.getElementById("email-input").value.trim();
+            const mensagemElemento = document.getElementById("mensagem");
+
+            if (emailsAutorizados.includes(emailDigitado)) {
+                // Redireciona para o link do Google Drive
+                window.location.href = linkGoogleDrive;
+            } else {
+                // Exibe mensagem de erro
+                mensagemElemento.textContent = "Acesso negado. Verifique o e-mail digitado.";
+            }
+        });
+    </script>
+</body>
+</html>
